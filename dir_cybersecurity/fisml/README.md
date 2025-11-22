@@ -1,45 +1,77 @@
-# FISML (File Integrity & Secret Leakage Monitor)
+# FISML - File Integrity and Secret Leakage Monitor
 
 Minimal Rust MVP for monitoring file changes and scanning for potential secret leaks.
 
-## Features (MVP)
-- Baseline scan of configured paths
-- Detect new / modified files (hash diff)
-- Optional secret scanning (regex + entropy heuristic)
-- SQLite backed state and append-only event chain (hash-linked)
-- Simple watch mode with Ctrl+C graceful exit
+---
 
-## Install / Build
+## Features
+
+- Baseline scan of configured paths
+- Detect new/modified files using hash comparison
+- Optional secret scanning with regex and entropy heuristic
+- SQLite-backed state and append-only event chain
+- Watch mode with graceful shutdown
+- Event hash chain integrity verification
+
+---
+
+## Installation
+
+Build from source:
 ```bash
 cargo build --release
 ```
 
+---
+
 ## Usage
+
+Initialize configuration:
 ```bash
-# Create default config (fisml.toml) if missing
 cargo run -- init-config
+```
 
-# Run baseline (with secret scanning)
+Run baseline scan with secret detection:
+```bash
 cargo run -- baseline --secrets
+```
 
-# List recent events
+List recent events:
+```bash
 cargo run -- list-events --limit 20
+```
 
-# Watch for changes (and secret scan)
+Watch for changes continuously:
+```bash
 cargo run -- watch --secrets
+```
 
-# Verify event hash chain integrity
+Verify event chain integrity:
+```bash
 cargo run -- verify-chain
 ```
 
-Set RUST_LOG for more verbose tracing:
+---
+
+## Configuration
+
+Configuration file (`fisml.toml`) is automatically generated on first run. Edit to configure:
+- Monitored paths
+- Ignore patterns
+- Entropy threshold for secret detection
+
+---
+
+## Logging
+
+Enable verbose logging:
 ```bash
 RUST_LOG=info cargo run -- watch
 ```
 
-## Config
-Automatically generated at first run (fisml.toml). Edit paths / ignore patterns / entropy threshold.
-
+---
 
 ## Disclaimer
-MVP quality. Not production hardened. Use at your own risk.
+
+MVP quality. Not production hardened. Use at your own risk and only on authorized systems.
+

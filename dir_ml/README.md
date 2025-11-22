@@ -1,69 +1,43 @@
-### Project Overview
+# Machine Learning
 
-This repository contains various projects and implementations related to artificial intelligence, machine learning, and game development. Each directory focuses on a specific topic or algorithm, ranging from clustering techniques to game bots and neural network visualizations.
-
----
-
-### Repository Structure
-
-📂 **15\_puzzle\_bot**  
-- **Language**: C++  
-- **Description**: Implementation of a bot solving the 15-puzzle game using search algorithms.  
-- **Key Files**: `main.cpp`, `CMakeLists.txt`
-
-📂 **dbscan**  
-- **Language**: Python  
-- **Description**: DBSCAN clustering algorithm applied to MNIST/EMNIST datasets.  
-- **Key Files**: `dbscan.py`
-
-📂 **digits\_recognizer**  
-- **Language**: Python  
-- **Description**: Handwritten digit recognition using machine learning techniques.  
-- **Key Files**: `digitsRecognizer.ipynb`
-
-📂 **k\_means**  
-- **Language**: Python  
-- **Description**: K-Means clustering applied to datasets with visualizations of assignments and centroids.  
-- **Key Files**: `k_means.py`, `assignment\_k10.png`, `centroids\_k10.png`
-
-📂 **k\_means\_img\_compression**  
-- **Language**: Python  
-- **Description**: Image compression using K-Means clustering.  
-- **Key Files**: `k_mean.ipynb`, `data/picture.png`
-
-📂 **tic\_tac\_toe\_4x4\_server\_bot**  
-- **Language**: C++  
-- **Description**: Server and bot implementation for a 4x4 Tic-Tac-Toe game using Minimax algorithm.  
-- **Key Files**: `minimax_player.cpp`, `server/game_server.cpp`
-
-📂 **visualize\_cnn**  
-- **Language**: Python  
-- **Description**: Visualization of Convolutional Neural Networks (CNNs) with sample data and models.  
-- **Key Files**: `main.ipynb`, `requirements.txt`
+Machine learning and AI projects featuring clustering algorithms, neural networks, and game bots.
 
 ---
 
-### Tools & Technologies
+## Projects
 
-- 🐍 **Python**: Used for machine learning, clustering, and neural network projects.  
-- 🖥️ **C++**: Used for game bot and server implementations.  
-- 🛠️ **PyCharm**: IDE for Python development.  
-- 🛠️ **CMake**: Build system for C++ projects.  
-- 📊 **Jupyter Notebook**: Interactive environment for Python-based projects.  
+### [15_puzzle_bot](./15_puzzle_bot)
+C++ implementation of a bot solving the 15-puzzle game using search algorithms.
+
+### [dbscan](./dbscan)
+DBSCAN clustering algorithm applied to MNIST/EMNIST datasets.
+
+### [digits_recognizer](./digits_recognizer)
+Handwritten digit recognition using machine learning techniques.
+
+### [k_means](./k_means)
+K-Means clustering with visualizations of assignments and centroids.
+
+### [k_means_img_compression](./k_means_img_compression)
+Image compression using K-Means clustering algorithm.
+
+### [tic_tac_toe_4x4_server_bot](./tic_tac_toe_4x4_server_bot)
+Server and bot implementation for 4x4 Tic-Tac-Toe using Minimax algorithm.
+
+### [visualize_cnn](./visualize_cnn)
+Visualization of Convolutional Neural Networks with sample data and models.
 
 ---
 
-### How to Use
+## Technologies
 
-1. Clone the repository:  
-   ```bash
-   git clone <repository_url>
-   ```
-2. Navigate to the desired project directory.  
-3. Follow the instructions in the respective `README.md` files or notebooks.  
+- Python for machine learning and clustering projects
+- C++ for game bots and server implementations
+- Jupyter Notebook for interactive development
+- CMake for C++ build configuration
 
 ---
 
-### License
+## License
 
-This repository is licensed under [MIT License](LICENSE).
+MIT License

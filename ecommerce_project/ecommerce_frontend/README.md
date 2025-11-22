@@ -1,12 +1,100 @@
-# React + Vite
+# E-commerce Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React-based frontend for e-commerce platform with Vite build system.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## Expanding the ESLint configuration
+Modern React application providing user interface for the e-commerce platform. Features product browsing, cart management, and checkout functionality with responsive design.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Building
+
+Install dependencies:
+```bash
+npm install
+```
+
+---
+
+## Configuration
+
+Create `.env` file with API endpoint:
+```
+VITE_API_URL=http://localhost:3000
+```
+
+---
+
+## Running
+
+Development server:
+```bash
+npm run dev
+```
+
+Build for production:
+```bash
+npm run build
+```
+
+Preview production build:
+```bash
+npm run preview
+```
+
+---
+
+## Linting
+
+Run ESLint:
+```bash
+npm run lint
+```
+
+---
+
+## Features
+
+- React 18 with hooks
+- React Router for navigation
+- Axios for API communication
+- React Hook Form for form handling
+- React Hot Toast for notifications
+- Responsive design
+- Fast refresh with Vite HMR
+
+---
+
+## Project Structure
+
+```
+ecommerce_frontend/
+├── src/
+│   ├── components/   # React components
+│   ├── pages/        # Page components
+│   ├── services/     # API service layer
+│   └── App.jsx       # Root component
+├── public/           # Static assets
+└── index.html        # HTML entry point
+```
+
+---
+
+## Tech Stack
+
+- React 18
+- Vite
+- React Router DOM
+- Axios
+- React Hook Form
+- React Hot Toast
+- ESLint
+
+---
+
+## Development
+
+Vite provides fast HMR and optimized builds. The dev server runs on `http://localhost:5173` by default.
