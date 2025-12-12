@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+import argparse
+import subprocess
+import sys
+import os
+import shutil
+from urllib.parse import urlparse
+
+def check_git_installed():
+    """Checks if git is installed and available in the PATH."""
+    try:
+        subprocess.run(["git", "--version"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        print("Error: Git is not installed or not found in PATH.")
+        sys.exit(1)
+
+def get_repo_name(url):
+    """Extracts the repository name from the URL."""
+    parsed = urlparse(url)
+    path = parsed.path
+    if path.endswith('.git'):
+        path = path[:-4]
+    return os.path.basename(path)
+
+def run_command(command, cwd=None, error_msg="Command failed"):
+    """Runs a shell command and handles errors."""
+    try:
+        subprocess.run(command, cwd=cwd, check=True, shell=False)
+    except subprocess.CalledProcessError as e:
+        print(f"Error: {error_msg}")
+        print(f"Command: {' '.join(command)}")
+        print(f"Return code: {e.returncode}")
+        sys.exit(e.returncode)
+
+def main():
+    parser = argparse.ArgumentParser(description="Mono-Clone: Clone specific directories from a Git repository (Sparse Clone).")
+    parser.add_argument("repo_url", help="The URL of the Git repository.")
+    parser.add_argument("directories", nargs='+', help="List of directory paths to include.")
+    parser.add_argument("--branch", default="main", help="The target branch (default: main).")
+    
+    args = parser.parse_args()
+
+    repo_url = args.repo_url
+    directories = args.directories
+    branch = args.branch
+    
+    check_git_installed()
+
+    repo_name = get_repo_name(repo_url)
+    
+    if os.path.exists(repo_name):
+        print(f"Directory '{repo_name}' already exists. Updating existing repository...")
+        if not os.path.isdir(os.path.join(repo_name, ".git")):
+            print(f"Error: '{repo_name}' exists but is not a git repository.")
+            sys.exit(1)
+        
+        print(f"Adding sparse checkout paths: {', '.join(directories)}...")
+        # Use 'add' to append to existing paths
+        run_command(["git", "sparse-checkout", "add"] + directories, cwd=repo_name, error_msg="Failed to add sparse checkout paths")
+        
+        print(f"Checking out branch '{branch}' to update files...")
+        run_command(["git", "checkout", branch], cwd=repo_name, error_msg="Failed to checkout branch")
+        
+        print("\nDone! Added new directories to existing clone.")
+        print(f"Location: {os.path.abspath(repo_name)}")
+        return
+
+    print(f"Creating directory '{repo_name}'...")
+    os.makedirs(repo_name)
+
+    print("Initializing empty git repository...")
+    run_command(["git", "init"], cwd=repo_name, error_msg="Failed to initialize git repository")
+
+    print(f"Adding remote origin '{repo_url}'...")
+    run_command(["git", "remote", "add", "origin", repo_url], cwd=repo_name, error_msg="Failed to add remote")
+
+    print("Configuring sparse checkout...")
+    run_command(["git", "config", "core.sparseCheckout", "true"], cwd=repo_name, error_msg="Failed to enable sparse checkout")
+    
+    # Set the directories to checkout
+    # git sparse-checkout set <dir1> <dir2> ...
+    print(f"Setting sparse checkout paths: {', '.join(directories)}...")
+    run_command(["git", "sparse-checkout", "set"] + directories, cwd=repo_name, error_msg="Failed to set sparse checkout paths")
+
+    print(f"Fetching metadata from branch '{branch}' (blobless clone)...")
+    # Fetch only the tip of the branch, blobless
+    run_command(["git", "fetch", "--depth=1", "--filter=blob:none", "origin", branch], cwd=repo_name, error_msg="Failed to fetch metadata")
+
+    print(f"Checking out branch '{branch}'...")
+    run_command(["git", "checkout", branch], cwd=repo_name, error_msg="Failed to checkout branch")
+
+    print("\nDone! Successfully cloned selected directories.")
+    print(f"Location: {os.path.abspath(repo_name)}")
+
+if __name__ == "__main__":
+    main()
