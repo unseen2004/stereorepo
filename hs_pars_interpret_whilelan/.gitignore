@@ -1,0 +1,32 @@
+# Stack build artifacts
+.stack-work/
+stack.yaml.lock
+
+# Cabal build artifacts
+dist/
+dist-newstyle/
+cabal.sandbox.config
+.cabal-sandbox/
+*.cabal.bak
+
+# Editor files
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# GHC interface files
+*.hi
+*.o
+*.chi
+*.chs.h
+
+# Profiling
+*.prof
+*.aux
+*.hp

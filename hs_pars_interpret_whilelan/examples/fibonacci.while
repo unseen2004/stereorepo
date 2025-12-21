@@ -1,0 +1,15 @@
+// Fibonacci sequence - computes fib(10)
+// Expected: fib = 55
+
+n := 10;
+a := 0;
+b := 1;
+
+while n > 0 do
+    temp := a + b;
+    a := b;
+    b := temp;
+    n := n - 1
+end;
+
+fib := a
