@@ -1,0 +1,137 @@
+# --- General ---
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.history/
+
+# --- IDEs & Editors ---
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# --- C++ / C / CMake ---
+# Compiled Object files
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+cmake-build-debug/
+cmake-build-release/
+build/
+bin/
+
+# --- Rust ---
+/target/
+**/**/target/
+**/*.rs.bk
+
+# --- Node.js / JavaScript / TypeScript ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.npm/
+
+# Build outputs
+dist/
+out/
+coverage/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# Keep example env files
+!.env.example
+!example.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / Packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+env/
+venv/
+.env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# --- Haskell ---
+.stack-work/
+dist-newstyle/
+*.hi
+*.o
+*.chi
+*.chs.h
+.ghc.environment.*
+
+# --- Go ---
+# Binaries
+*.test
+*.prof
+
+# --- Other ---
+*.log
+tmp/
+temp/
