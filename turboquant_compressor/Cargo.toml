@@ -1,0 +1,20 @@
+[package]
+name = "turboquant_compressor"
+version = "0.2.0"
+edition = "2021"
+
+[dependencies]
+turboquant = "0.1.1"
+safetensors = "0.7.0"
+clap = { version = "4.4", features = ["derive"] }
+ndarray = "0.15"
+indicatif = { version = "0.17", features = ["rayon"] }
+anyhow = "1.0"
+rayon = "1.8"
+memmap2 = "0.9"
+bytemuck = { version = "1.14", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+half = { version = "2.3", features = ["bytemuck"] }
+walkdir = "2.4"
+tempfile = "3.8"
